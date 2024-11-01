@@ -7,7 +7,7 @@ const logger = require('morgan');
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
-app.use(errorHandler);
+app.use(errorHandler());
 
 if (!process.env.IS_TEST_ENV) {
     app.use(logger('dev'));
@@ -16,7 +16,7 @@ if (!process.env.IS_TEST_ENV) {
 const apiRouter = require('./api/api');
 app.use('/api', apiRouter);
 
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4000;
 
 app.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`);
